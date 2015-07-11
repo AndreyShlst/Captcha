@@ -1,42 +1,21 @@
-<?php 
-session_start();
-$output = "";
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-  if(!isset($_SESSION["randStr"])){
-    $output = "Включите отображение картинок в настройках браузера";
-  }
-  else{
-    if($_SESSION["randStr"] == strtolower($_POST["answer"])){
-      $output = "Капча введена верно :)";
-    }else{
-      $output = "Ошибка.Повторите ввод :/";
-    }
-  }
-}
-?>
+<?php require "inc/checking.inc.php";?>
 <!DOCTYPE HTML>
 <html>
-
 <head>
-  <meta charset="utf-8" />
-  <title>Регистрация</title>
+	<link href="css/style_index.css" rel="stylesheet">
+	<meta charset="utf-8" />
+	<title>Чтобы увидеть танцующего робота - введите капчу:)</title>
 </head>
 
 <body>
-  <h1>Регистрация</h1>
-  <form action="" method="post">
-    <div>
-      <img src="noise-picture.php">
-    </div>
-    <div>
-      <label>Введите строку</label>
-      <input type="text" name="answer" size="6">
-    </div>
-    <input type="submit" value="Подтвердить">
-  </form>
-  <?php 
-    echo $output;
-  ?>
+	<h3>Чтобы увидеть танцующего робота - введите капчу:)</h3>
+	<form action="" method="post">
+		<div id="captcha">
+			<div><img src="noise-picture.php"></div>
+			<div><input type="text" name="answer" size="29"></div>
+			<input type="submit" value="Подтвердить">
+		</div>
+	</form>
+	<div id="errorMsg"> <?=$output;?> </div>
 </body>
-
 </html>

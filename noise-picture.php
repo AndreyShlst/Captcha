@@ -1,6 +1,6 @@
 <?php
 session_start();//В сессии будем хранить ответ капчи
-$img = imagecreatefromjpeg("images/noise.jpg");
+$img = imagecreatefrompng("images/noise.png");
 $color = imagecolorallocate($img, 64, 64, 64);
 imageantialias($img, true);//Сглаживание
 $nChars = 5;//Количество символов капчи
@@ -19,5 +19,5 @@ for($i=0;$i<$nChars;$i++){
 	$x+= $deltaX;
 }
 
-header("Content-Type: image/jpg");
-imagejpeg($img);
+header("Content-Type: image/png");
+imagepng($img);
